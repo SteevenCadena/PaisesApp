@@ -1,0 +1,25 @@
+<h2 class="animate__animated animate__fadeInLeft">Por Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-pais-input
+            (onNewTermino)="buscar( $event )"
+            (onDebounce)="sugerir($event)"
+            [buscarPor]="buscarPor"
+        ></app-pais-input>
+    </div>
+</div>
+<hr>
+
+<div class="alert alert-danger" *ngIf="hayError;">
+    No se encontró nada con el término <b>{{ termino }}</b>
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+
+        <app-pais-tabla [paises]="paises" [titulo]="titulo"></app-pais-tabla>
+
+    </div>
+</div>
